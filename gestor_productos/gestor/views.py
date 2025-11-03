@@ -162,6 +162,8 @@ class ProductoListView(PermissionProtectedTemplateView):
 # Agregar
 
 class ProductoAddView(PermissionProtectedTemplateView):
+    template_name = 'producto_add.html'
+    permission_required = 'gestor.add_producto'
 
     def get(self, request, *args, **kwargs):
         form = ProductoForm()
@@ -194,6 +196,9 @@ class ProductoAddView(PermissionProtectedTemplateView):
 # Actualizar
 
 class ProductoUpdateView(PermissionProtectedTemplateView):
+
+    template_name = 'producto_update.html'
+    permission_required = 'gestor.change_producto'
 
     def get(self, request, pk, *args, **kwargs):
         producto = get_object_or_404(Producto, pk=pk)
